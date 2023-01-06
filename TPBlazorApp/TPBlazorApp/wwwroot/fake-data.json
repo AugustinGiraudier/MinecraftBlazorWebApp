@@ -1,0 +1,280 @@
+[
+  {
+    "id": 1,
+    "displayname": "Endicil",
+    "name": "endicil",
+    "stacksize": 50,
+    "maxdurability": 31,
+    "enchantcategories": [
+      "weapon",
+      "weapon",
+      "armor_head"
+    ],
+    "repairwith": [
+      "birch_planks",
+      "warped_planks"
+    ],
+    "createddate": "2022-08-11",
+    "updateddate": "2014-05-23"
+  },
+  {
+    "id": 2,
+    "displayname": "Snips",
+    "name": "snips",
+    "stacksize": 47,
+    "maxdurability": 92,
+    "enchantcategories": [],
+    "repairwith": [
+      "acacia_planks"
+    ],
+    "createddate": "2022-05-01",
+    "updateddate": null
+  },
+  {
+    "id": 3,
+    "displayname": "Bullzone",
+    "name": "bullzone",
+    "stacksize": 48,
+    "maxdurability": 26,
+    "enchantcategories": [],
+    "repairwith": [
+      "warped_planks",
+      "dark_oak_planks"
+    ],
+    "createddate": "2021-05-29",
+    "updateddate": "2016-06-24"
+  },
+  {
+    "id": 4,
+    "displayname": "Gink",
+    "name": "gink",
+    "stacksize": 44,
+    "maxdurability": 35,
+    "enchantcategories": [
+      "digger",
+      "digger"
+    ],
+    "repairwith": [],
+    "createddate": "2017-12-27",
+    "updateddate": "2015-10-05"
+  },
+  {
+    "id": 5,
+    "displayname": "Podunk",
+    "name": "podunk",
+    "stacksize": 8,
+    "maxdurability": 48,
+    "enchantcategories": [
+      "armor",
+      "weapon"
+    ],
+    "repairwith": [
+      "crimson_planks",
+      "spruce_planks"
+    ],
+    "createddate": "2022-10-12",
+    "updateddate": null
+  },
+  {
+    "id": 6,
+    "displayname": "Quilk",
+    "name": "quilk",
+    "stacksize": 55,
+    "maxdurability": 16,
+    "enchantcategories": [],
+    "repairwith": [
+      "dark_oak_planks",
+      "warped_planks"
+    ],
+    "createddate": "2019-07-03",
+    "updateddate": null
+  },
+  {
+    "id": 7,
+    "displayname": "Collaire",
+    "name": "collaire",
+    "stacksize": 50,
+    "maxdurability": 124,
+    "enchantcategories": [
+      "weapon"
+    ],
+    "repairwith": [],
+    "createddate": "2019-08-07",
+    "updateddate": null
+  },
+  {
+    "id": 8,
+    "displayname": "Tubalum",
+    "name": "tubalum",
+    "stacksize": 46,
+    "maxdurability": 59,
+    "enchantcategories": [
+      "armor_chest"
+    ],
+    "repairwith": [
+      "acacia_planks"
+    ],
+    "createddate": "2018-09-28",
+    "updateddate": "2016-10-22"
+  },
+  {
+    "id": 9,
+    "displayname": "Codax",
+    "name": "codax",
+    "stacksize": 35,
+    "maxdurability": 118,
+    "enchantcategories": [],
+    "repairwith": [
+      "spruce_planks",
+      "jungle_planks"
+    ],
+    "createddate": "2020-07-16",
+    "updateddate": "2016-07-27"
+  },
+  {
+    "id": 10,
+    "displayname": "Filodyne",
+    "name": "filodyne",
+    "stacksize": 25,
+    "maxdurability": 76,
+    "enchantcategories": [
+      "breakable"
+    ],
+    "repairwith": [
+      "crimson_planks"
+    ],
+    "createddate": "2020-06-16",
+    "updateddate": "2017-05-20"
+  },
+  {
+    "id": 11,
+    "displayname": "Portaline",
+    "name": "portaline",
+    "stacksize": 58,
+    "maxdurability": 67,
+    "enchantcategories": [
+      "vanishable"
+    ],
+    "repairwith": [
+      "acacia_planks"
+    ],
+    "createddate": "2020-03-06",
+    "updateddate": null
+  },
+  {
+    "id": 12,
+    "displayname": "Digirang",
+    "name": "digirang",
+    "stacksize": 61,
+    "maxdurability": 50,
+    "enchantcategories": [],
+    "repairwith": [
+      "spruce_planks"
+    ],
+    "createddate": "2022-06-21",
+    "updateddate": null
+  },
+  {
+    "id": 13,
+    "displayname": "Signidyne",
+    "name": "signidyne",
+    "stacksize": 13,
+    "maxdurability": 67,
+    "enchantcategories": [],
+    "repairwith": [
+      "acacia_planks"
+    ],
+    "createddate": "2017-07-01",
+    "updateddate": null
+  },
+  {
+    "id": 14,
+    "displayname": "Pasturia",
+    "name": "pasturia",
+    "stacksize": 32,
+    "maxdurability": 114,
+    "enchantcategories": [
+      "armor_chest",
+      "armor",
+      "armor_head"
+    ],
+    "repairwith": [
+      "oak_planks"
+    ],
+    "createddate": "2017-03-29",
+    "updateddate": null
+  },
+  {
+    "id": 15,
+    "displayname": "Optyk",
+    "name": "optyk",
+    "stacksize": 47,
+    "maxdurability": 91,
+    "enchantcategories": [
+      "armor_head"
+    ],
+    "repairwith": [],
+    "createddate": "2016-03-01",
+    "updateddate": null
+  },
+  {
+    "id": 16,
+    "displayname": "Immunics",
+    "name": "immunics",
+    "stacksize": 19,
+    "maxdurability": 93,
+    "enchantcategories": [],
+    "repairwith": [
+      "spruce_planks",
+      "jungle_planks"
+    ],
+    "createddate": "2015-03-10",
+    "updateddate": null
+  },
+  {
+    "id": 17,
+    "displayname": "Kenegy",
+    "name": "kenegy",
+    "stacksize": 35,
+    "maxdurability": 120,
+    "enchantcategories": [
+      "armor_head"
+    ],
+    "repairwith": [
+      "warped_planks",
+      "crimson_planks"
+    ],
+    "createddate": "2014-06-04",
+    "updateddate": "2016-12-26"
+  },
+  {
+    "id": 18,
+    "displayname": "Futuris",
+    "name": "futuris",
+    "stacksize": 61,
+    "maxdurability": 46,
+    "enchantcategories": [],
+    "repairwith": [
+      "acacia_planks",
+      "jungle_planks"
+    ],
+    "createddate": "2016-04-25",
+    "updateddate": null
+  },
+  {
+    "id": 19,
+    "displayname": "Retrack",
+    "name": "retrack",
+    "stacksize": 4,
+    "maxdurability": 82,
+    "enchantcategories": [
+      "weapon",
+      "digger"
+    ],
+    "repairwith": [
+      "jungle_planks"
+    ],
+    "createddate": "2015-04-13",
+    "updateddate": "2017-09-29"
+  }
+]
