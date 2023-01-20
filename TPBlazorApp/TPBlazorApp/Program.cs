@@ -5,13 +5,14 @@ using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using TPBlazorApp.Data;
+using TPBlazorApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<IDataService, DataLocalService>();
 builder.Services.AddHttpClient();
 builder.Services
    .AddBlazorise()
