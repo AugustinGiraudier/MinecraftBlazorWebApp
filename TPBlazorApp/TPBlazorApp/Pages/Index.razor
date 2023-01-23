@@ -11,4 +11,19 @@ Welcome to your new app.
     <b>CurrentCulture</b>: @CultureInfo.CurrentCulture
 </p>
 
+
+<Card Item="CakeItem">
+    <CardHeader Context="headContext">
+        <div class="card-header">
+            Cake Token Number - @headContext.Id
+        </div>
+    </CardHeader>
+    <CardBody Context="bodyContext">
+        <div class="card-body">
+            <div>@bodyContext.Name</div>
+            <div>$ @bodyContext.Cost</div>
+        </div>
+    </CardBody>
+</Card>
+
 <SurveyPrompt Title="How is Blazor working for you?" />
