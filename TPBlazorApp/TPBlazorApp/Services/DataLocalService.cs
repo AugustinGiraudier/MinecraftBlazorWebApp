@@ -1,5 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
+using TPBlazorApp.Factories;
 using TPBlazorApp.Models;
 
 namespace TPBlazorApp.Services
@@ -32,17 +33,7 @@ namespace TPBlazorApp.Services
             model.Id = currentData.Max(s => s.Id) + 1;
 
             // Add the item to the current data
-            currentData.Add(new Item
-            {
-                Id = model.Id,
-                DisplayName = model.DisplayName,
-                Name = model.Name,
-                RepairWith = model.RepairWith,
-                EnchantCategories = model.EnchantCategories,
-                MaxDurability = model.MaxDurability,
-                StackSize = model.StackSize,
-                CreatedDate = DateTime.Now
-            });
+            currentData.Add(ItemFactory.Create(model));
 
             // Save the image
             var imagePathInfo = new DirectoryInfo($"{_webHostEnvironment.WebRootPath}/images");
@@ -153,13 +144,31 @@ namespace TPBlazorApp.Services
             await File.WriteAllBytesAsync(fileName.FullName, model.ImageContent);
 
             // Modify the content of the item
-            item.DisplayName = model.DisplayName;
-            item.Name = model.Name;
-            item.RepairWith = model.RepairWith;
-            item.EnchantCategories = model.EnchantCategories;
-            item.MaxDurability = model.MaxDurability;
-            item.StackSize = model.StackSize;
-            item.UpdatedDate = DateTime.Now;
+            ItemFactory.Update(item, model);
+
+            // Save the data
+            await _localStorage.SetItemAsync("data", currentData);
+        }
+
+        public async Task Delete(int id)
+        {
+            // Get the current data
+            var currentData = await _localStorage.GetItemAsync<List<Item>>("data");
+
+            // Get the item int the list
+            var item = currentData.FirstOrDefault(w => w.Id == id);
+
+            // Delete item in
+            currentData.Remove(item);
+
+            // Delete the image
+            var imagePathInfo = new DirectoryInfo($"{_webHostEnvironment.WebRootPath}/images");
+            var fileName = new FileInfo($"{imagePathInfo}/{item.Name}.png");
+
+            if (fileName.Exists)
+            {
+                File.Delete(fileName.FullName);
+            }
 
             // Save the data
             await _localStorage.SetItemAsync("data", currentData);
