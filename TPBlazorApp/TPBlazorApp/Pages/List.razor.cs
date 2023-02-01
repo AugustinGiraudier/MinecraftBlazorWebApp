@@ -10,6 +10,7 @@ using Microsoft.Extensions.Localization;
 
 namespace TPBlazorApp.Pages
 {
+
     public partial class List
     {
         [Inject]
