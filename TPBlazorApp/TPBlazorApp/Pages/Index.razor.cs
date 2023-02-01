@@ -1,37 +1,32 @@
-﻿using TPBlazorApp.Models;
+﻿using Microsoft.AspNetCore.Components;
+using TPBlazorApp.Components;
+using TPBlazorApp.Models;
+using TPBlazorApp.Services;
 
 namespace TPBlazorApp.Pages
 {
     public partial class Index
     {
-        public List<Cake> Cakes { get; set; }
+        [Inject]
+        public IDataService DataService { get; set; }
 
-        protected override Task OnAfterRenderAsync(bool firstRender)
-        {
-            LoadCakes();
-            StateHasChanged();
-            return base.OnAfterRenderAsync(firstRender);
-        }
+        public List<Item> Items { get; set; } = new List<Item>();
 
-        public void LoadCakes()
+        private List<CraftingRecipe> Recipes { get; set; } = new List<CraftingRecipe>();
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            Cakes = new List<Cake>
+            base.OnAfterRenderAsync(firstRender);
+
+            if (!firstRender)
             {
-                // items hidden for display purpose
-                new Cake
-                {
-                    Id = 1,
-                    Name = "Red Velvet",
-                    Cost = 60
-                },
-            };
-        }
+                return;
+            }
 
-        private Cake CakeItem = new Cake
-        {
-            Id = 1,
-            Name = "Black Forest",
-            Cost = 50
-        };
+            Items = await DataService.List(0, await DataService.Count());
+            Recipes = await DataService.GetRecipes();
+
+            StateHasChanged();
+        }
     }
 }

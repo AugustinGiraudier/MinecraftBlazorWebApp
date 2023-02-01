@@ -3,49 +3,7 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    <Crafting Items="Items" Recipes="Recipes" />
+</div>
 
-Welcome to your new app.
-
-<p>
-    <b>CurrentCulture</b>: @CultureInfo.CurrentCulture
-</p>
-
-
-<Card Item="CakeItem">
-    <CardHeader Context="headContext">
-        <div class="card-header">
-            Cake Token Number - @headContext.Id
-        </div>
-    </CardHeader>
-    <CardBody Context="bodyContext">
-        <div class="card-body">
-            <div>@bodyContext.Name</div>
-            <div>$ @bodyContext.Cost</div>
-        </div>
-    </CardBody>
-</Card>
-
-<TestRenderFragment>
-    <div>Content of my TestRenderFragment</div>
-</TestRenderFragment>
-
-
-<ShowItems Items="Cakes" >
-    <ShowTemplate Context="CakeContext">
-        <div class="card text-center">
-            <div class="card-header">
-                Cake Token Id - @CakeContext.Id
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">@CakeContext.Name</h5>
-                <p class="card-text">Price $@CakeContext.Cost</p>
-            </div>
-            <div class="card-footer text-muted">
-                Click Here
-            </div>
-        </div>
-    </ShowTemplate>
-</ShowItems>
-
-<SurveyPrompt Title="How is Blazor working for you?" />

@@ -1,4 +1,5 @@
-﻿using TPBlazorApp.Models;
+﻿using TPBlazorApp.Components;
+using TPBlazorApp.Models;
 
 namespace TPBlazorApp.Services
 {
@@ -15,5 +16,7 @@ namespace TPBlazorApp.Services
         Task Update(int id, ItemModel model);
 
         Task Delete(int id);
+
+        Task<List<CraftingRecipe>> GetRecipes();
     }
 }

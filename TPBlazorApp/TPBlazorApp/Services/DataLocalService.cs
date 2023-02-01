@@ -1,5 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
+using TPBlazorApp.Components;
 using TPBlazorApp.Factories;
 using TPBlazorApp.Models;
 
@@ -172,6 +173,25 @@ namespace TPBlazorApp.Services
 
             // Save the data
             await _localStorage.SetItemAsync("data", currentData);
+        }
+
+        public Task<List<CraftingRecipe>> GetRecipes()
+        {
+            var items = new List<CraftingRecipe>
+        {
+            new CraftingRecipe
+            {
+                Give = new Item { DisplayName = "Diamond", Name = "diamond" },
+                Have = new List<List<string>>
+                {
+                    new List<string> { "dirt", "dirt", "dirt" },
+                    new List<string> { "dirt", null, "dirt" },
+                    new List<string> { "dirt", "dirt", "dirt" }
+                }
+            }
+        };
+
+            return Task.FromResult(items);
         }
     }
 }
