@@ -3,6 +3,13 @@ using TPBlazorApp.Models;
 
 namespace TPBlazorApp.Components
 {
+
+    public enum InventoryItemType
+    {
+        SIMPLE,
+        WITH_IMAGE
+    }
+
     public partial class InventoryItem
     {
         [Parameter]
@@ -13,6 +20,9 @@ namespace TPBlazorApp.Components
 
         [Parameter]
         public bool NoDrop { get; set; }
+        
+        [Parameter]
+        public InventoryItemType type { get; set; } = InventoryItemType.SIMPLE;
 
         [CascadingParameter]
         public InventoryManager Parent { get; set; }

@@ -30,7 +30,7 @@
                       Responsive>
                 <DataGridColumn TItem="Item" Field="@nameof(Item.Id)" Caption="Items">
                     <DisplayTemplate>
-                        <ItemWithImg Item="context" />
+                        <InventoryItem Item="context" type="InventoryItemType.WITH_IMAGE" />
                     </DisplayTemplate>
                 </DataGridColumn>
             </DataGrid>
