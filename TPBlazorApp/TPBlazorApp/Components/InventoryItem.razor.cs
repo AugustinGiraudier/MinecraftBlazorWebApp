@@ -54,18 +54,16 @@ namespace TPBlazorApp.Components
                 return;
             }
 
-            //this.Item = Parent.CurrentDragItem;
+            this.Item = Parent.CurrentDragItem;
             Parent.Items[this.Index] = this.Item;
 
             Parent.Actions.Add(new InventoryAction { Action = "Drop", Item = this.Item, Index = this.Index });
 
-            // Check recipe
-            //Parent.CheckRecipe();
         }
 
         private void OnDragStart()
         {
-            //Parent.CurrentDragItem = this.Item;
+            Parent.CurrentDragItem = this.Item;
 
             Parent.Actions.Add(new InventoryAction { Action = "Drag Start", Item = this.Item, Index = this.Index });
         }

@@ -23,7 +23,7 @@ namespace TPBlazorApp.Components
         [Parameter]
         public List<Item?> Items { get; set; }
 
-
+        public Item CurrentDragItem { get; set; }
         private List<Item> allItems { get; set; }
 
         private int totalItem { get; set; }
@@ -51,7 +51,8 @@ namespace TPBlazorApp.Components
             foreach(var item in e.NewItems)
             {
                 var action = (InventoryAction)item;
-                Console.WriteLine($"index:{action.Index}, item:{action.Item}");
+                if(action.Action == "Drop")
+                    Console.WriteLine($"index:{action.Index}, item:{action.Item}");
             }
         }
     }
