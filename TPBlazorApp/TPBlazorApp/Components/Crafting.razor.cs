@@ -2,7 +2,6 @@
 using Microsoft.JSInterop;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using TPBlazorApp.Components;
 using TPBlazorApp.Models;
 
 namespace TPBlazorApp.Components

@@ -1,0 +1,42 @@
+﻿@using Models
+<CascadingValue Value="@this">
+     
+    <div class="w-100 row">
+
+        <!-- ========= Left part ========= -->
+        <div class="col-md-6">
+            <div>Your Inventory</div>
+            <div class="mt-2">
+                <div class="css-grid">
+                    @{int iItem = 0; }
+                    @foreach (var item in Items)
+                    {
+                        <InventoryItem Item="item" Index="iItem" />
+                        iItem++;
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- ========= Right part ========= -->
+
+        <div class="col-md-6">
+            <DataGrid TItem="Item"
+                      Data="@allItems"
+                      ReadData="@OnReadData"
+                      TotalItems="@totalItem"
+                      PageSize="10"
+                      ShowPager
+                      Responsive>
+                <DataGridColumn TItem="Item" Field="@nameof(Item.Id)" Caption="Items">
+                    <DisplayTemplate>
+                        <ItemWithImg Item="context" />
+                    </DisplayTemplate>
+                </DataGridColumn>
+            </DataGrid>
+        </div>
+
+
+    </div>
+
+</CascadingValue>

@@ -5,14 +5,15 @@ namespace TPBlazorApp.Components
 {
     public partial class ItemWithImg
     {
-        //[Parameter]
-        //public int Index { get; set; }
 
         [Parameter]
         public Item Item { get; set; }
 
         [Parameter]
         public bool NoDrop { get; set; }
+
+        [CascadingParameter]
+        public InventoryManager Parent { get; set; }
 
 
         internal void OnDragEnter()
