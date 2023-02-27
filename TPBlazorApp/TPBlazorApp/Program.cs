@@ -3,9 +3,6 @@ using Blazorise;
 using Blazored.Modal;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using TPBlazorApp.Data;
 using TPBlazorApp.Services;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
@@ -16,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<IDataService, DataLocalService>();
+builder.Services.AddScoped<IDataService, DataApiService>();
 builder.Services.AddHttpClient();
 builder.Services
    .AddBlazorise()

@@ -33,5 +33,7 @@ namespace TPBlazorApp.Models
 
         [Required(ErrorMessage = "L'image de l'item est obligatoire !")]
         public byte[] ImageContent { get; set; }
+
+        public string ImageBase64 { get; set; }
     }
 }
