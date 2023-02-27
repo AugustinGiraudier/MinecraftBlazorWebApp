@@ -8,25 +8,20 @@ namespace TPBlazorApp.Pages
     public partial class Inventory
     {
 
-        private List<Item> items;
-
-        private int totalItem;
+        private int nbSlots = 32;
 
         [Inject]
         public IDataService DataService { get; set; }
 
-        private async Task OnReadData(DataGridReadDataEventArgs<Item> e)
-        {
-            if (e.CancellationToken.IsCancellationRequested)
-            {
-                return;
-            }
+        private List<Item> items = new List<Item>();
 
-            if (!e.CancellationToken.IsCancellationRequested)
+        public Inventory()
+        {
+            for(int i = 0; i < nbSlots; i++)
             {
-                items = await DataService.List(e.Page, e.PageSize);
-                totalItem = await DataService.Count();
+                items.Add(null);
             }
         }
+
     }
 }
