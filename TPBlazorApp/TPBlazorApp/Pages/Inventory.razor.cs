@@ -1,9 +1,5 @@
-﻿using Blazored.Modal;
-using Blazored.Modal.Services;
-using Blazorise.DataGrid;
+﻿using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Localization;
-using TPBlazorApp.Modals;
 using TPBlazorApp.Models;
 using TPBlazorApp.Services;
 
