@@ -65,7 +65,7 @@ Voici la vue de ce dernier :
 Cette liste possède des combinaisons 'item' - 'nombre d'item'. Cela permet de mettre à jour la vue facilement en modifiant l'un de ces deux valeurs.
 ---
 * La partie centrale est un second Composant à part entière qui gère simplement la suppression d'un élément drag and drop sur ce drnier.
-```C#
+```java
     internal void OnDrop()
     {
         Parent.CurrentDragSlot.reset();
@@ -74,7 +74,7 @@ Cette liste possède des combinaisons 'item' - 'nombre d'item'. Cela permet de m
 ---
 * La dernière partie est une dataGrid avec pagination chargée grace à la methode List de l'api injectée en tant que `IDataService` à la page inventory.
   
-```C#
+```java
     private async Task OnReadData(DataGridReadDataEventArgs<Item> e)
     {
         if (e.CancellationToken.IsCancellationRequested)
@@ -100,7 +100,7 @@ Ce composant contient la plus grande partie de la logique de la page. En effet, 
 Il possède deux formes possibles de rendu (avec ou sans image) et gère la logique de drag and drop des éléments.
 
 
-```C#
+```java
     internal void OnDrop()
     {
         if (NoDrop)
@@ -149,7 +149,7 @@ Cette methode gère également les différents cas suivants :
 
 Chaque action dans l'inventaire est loggé. Ceci est réalisé grace à l'injection d'un logger à la construction du manager et grace au nuget `Microsoft.Extensions.Logging.Configuration`.
 
-```C#
+```java
     [Inject]
     public ILogger<InventoryManager> _logger { get; set; }
 ```
@@ -158,11 +158,11 @@ Chaque action dans l'inventaire est loggé. Ceci est réalisé grace à l'inject
 
 La récupération de la sauvegarde est gérée par la page Inventory après le premier rendu :
 
-```C#
+```java
     [Inject]
     private ILocalStorageService _localStorage { get; set; }
 ```
-```C#
+```java
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         var testSave = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
@@ -174,7 +174,7 @@ La récupération de la sauvegarde est gérée par la page Inventory après le p
 
 Et LocalStorageService est passé en paramètre au manager :
 
-```C#
+```java
     [Parameter]
     public ILocalStorageService _localStorage { get; set; }
 ```
@@ -186,7 +186,7 @@ Cette page gère 2 langes : Français et Anglais.
 
 Le service de localisation est injecté à la page Inventory et passée au manager par Parametre.
 
-```C#
+```java
     [Inject]
     private ILocalStorageService _localStorage { get; set; }
 ```
