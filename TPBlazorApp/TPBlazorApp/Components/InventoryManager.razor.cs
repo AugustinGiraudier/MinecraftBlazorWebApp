@@ -1,4 +1,4 @@
-﻿using Blazorise;
+﻿using Blazored.LocalStorage;
 using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Components;
 using System.Collections.ObjectModel;
@@ -17,22 +17,32 @@ namespace TPBlazorApp.Components
         {
             Actions = new ObservableCollection<InventoryAction>();
             Actions.CollectionChanged += OnActionsCollectionChanged;
+            Slots = new List<Slot?>();
+            for (int i = 0; i < 32; i++)
+            {
+                Slots.Add(new Slot { item = null, count = 1 });
+            }
         }
 
+        [Inject]
+        private ILocalStorageService _localStorage { get; set; }
         public ObservableCollection<InventoryAction> Actions { get; set; }
-
-        [Parameter]
-        public List<Slot?> Slots { get; set; }
-
+        private List<Slot?> Slots { get; set; }
         public Item CurrentDragItem { get; set; }
         public InventoryItem CurrentDragSlot { get; set; }
         private List<Item> allItems { get; set; }
-
         private int totalItem { get; set; }
 
         [Parameter]
         public IDataService DataService { get; set; }
 
+        protected override async Task OnInitializedAsync()
+        {
+            var test = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
+            if (test != null)
+                Slots = test;
+            StateHasChanged();
+        }
         private async Task OnReadData(DataGridReadDataEventArgs<Item> e)
         {
             if (e.CancellationToken.IsCancellationRequested)
@@ -56,6 +66,14 @@ namespace TPBlazorApp.Components
                 if(action.Action == "Drop")
                     Console.WriteLine($"index:{action.Index}, item:{action.Item}");
             }
+        }
+
+        public void changeSlot(int index, int newCount, Item? newItem)
+        {
+            Slots[index].count = newCount;
+            Slots[index].item = newItem;
+
+            _localStorage.SetItemAsync("inventory", Slots);
         }
     }
 }
