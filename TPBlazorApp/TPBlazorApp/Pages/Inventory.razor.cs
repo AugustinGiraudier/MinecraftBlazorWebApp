@@ -30,9 +30,9 @@ namespace TPBlazorApp.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            var test = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
-            if (test != null)
-                Slots = test;
+            var testSave = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
+            if (testSave != null)
+                Slots = testSave;
             StateHasChanged();
         }
 

@@ -41,20 +41,8 @@ namespace TPBlazorApp.Components
         {
             Actions = new ObservableCollection<InventoryAction>();
             Actions.CollectionChanged += OnActionsCollectionChanged;
-            //Slots = new List<Slot?>();
-            //for (int i = 0; i < 32; i++)
-            //{
-            //    Slots.Add(new Slot { item = null, count = 1 });
-            //}
         }
 
-        //protected override async Task OnAfterRenderAsync()
-        //{
-        //    var test = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
-        //    if (test != null)
-        //        Slots = test;
-        //    StateHasChanged();
-        //}
         private async Task OnReadData(DataGridReadDataEventArgs<Item> e)
         {
             if (e.CancellationToken.IsCancellationRequested)

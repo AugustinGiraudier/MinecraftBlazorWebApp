@@ -70,25 +70,29 @@ namespace TPBlazorApp.Components
 
             if(this.Item == null || this.Item.Equals(Parent.CurrentDragItem))
             {
+                // set new values
                 if(Item == null)
                     this.Count = Parent.CurrentDragSlot.Count;
                 else 
                     this.Count += Parent.CurrentDragSlot.Count;
                 this.Item = Parent.CurrentDragItem;
-                StateHasChanged();
-                Parent.CurrentDragSlot.reset();
-                Parent.changeSlot(Index, Count, Item);
+                StateHasChanged();  // notify view
+                Parent.CurrentDragSlot.reset(); // reset last area
+                Parent.changeSlot(Index, Count, Item); // notify and save change
             }
 
+            // notify action to be logged
             Parent.Actions.Add(new InventoryAction { Action = "Drop", Item = this.Item, Index = this.Index });
 
         }
 
         private void OnDragStart()
         {
+            // keep current moving item
             Parent.CurrentDragItem = this.Item;
             Parent.CurrentDragSlot = this;
 
+            // notify action to be logged
             Parent.Actions.Add(new InventoryAction { Action = "Drag Start", Item = this.Item, Index = this.Index });
         }
     }
