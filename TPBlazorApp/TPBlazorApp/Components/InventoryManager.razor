@@ -4,7 +4,7 @@
     <div class="w-100 row" >
 
         <!-- ========= Left part ========= -->
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div>Your Inventory</div>
             <div class="mt-2">
                 <div class="css-grid">
@@ -18,9 +18,15 @@
             </div>
         </div>
 
+
+        <!-- ========= Middle part ========= -->
+        <div class="col-md-4 d-flex text-danger justify-content-center">
+            <ItemTrash />
+        </div>
+
         <!-- ========= Right part ========= -->
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <DataGrid TItem="Item"
                       Data="@allItems"
                       ReadData="@OnReadData"
