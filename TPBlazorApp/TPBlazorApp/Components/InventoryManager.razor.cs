@@ -1,4 +1,5 @@
-﻿using Blazorise.DataGrid;
+﻿using Blazorise;
+using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Components;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -24,6 +25,7 @@ namespace TPBlazorApp.Components
         public List<Item?> Items { get; set; }
 
         public Item CurrentDragItem { get; set; }
+        public InventoryItem CurrentDragSlot { get; set; }
         private List<Item> allItems { get; set; }
 
         private int totalItem { get; set; }

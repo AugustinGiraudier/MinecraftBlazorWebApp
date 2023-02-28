@@ -27,6 +27,15 @@ namespace TPBlazorApp.Components
         [CascadingParameter]
         public InventoryManager Parent { get; set; }
 
+        public void reset()
+        {
+            if (!NoDrop)
+            {
+                Item = null;
+                StateHasChanged();
+            }
+        }
+
         internal void OnDragEnter()
         {
             if (NoDrop)
@@ -54,8 +63,12 @@ namespace TPBlazorApp.Components
                 return;
             }
 
-            this.Item = Parent.CurrentDragItem;
-            Parent.Items[this.Index] = this.Item;
+            if(this.Item == null || this.Item.Equals(Parent.CurrentDragItem))
+            {
+                this.Item = Parent.CurrentDragItem;
+                Parent.Items[this.Index] = this.Item;
+                Parent.CurrentDragSlot.reset();
+            }
 
             Parent.Actions.Add(new InventoryAction { Action = "Drop", Item = this.Item, Index = this.Index });
 
@@ -64,6 +77,7 @@ namespace TPBlazorApp.Components
         private void OnDragStart()
         {
             Parent.CurrentDragItem = this.Item;
+            Parent.CurrentDragSlot = this;
 
             Parent.Actions.Add(new InventoryAction { Action = "Drag Start", Item = this.Item, Index = this.Index });
         }
