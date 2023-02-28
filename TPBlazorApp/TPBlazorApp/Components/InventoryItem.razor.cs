@@ -37,8 +37,7 @@ namespace TPBlazorApp.Components
                 Item = null;
                 Count = 1;
                 StateHasChanged();
-                Parent.Slots[this.Index].item = this.Item;
-                Parent.Slots[this.Index].count = Count;
+                Parent.changeSlot(Index, Count, Item);
             }
         }
 
@@ -78,8 +77,7 @@ namespace TPBlazorApp.Components
                 this.Item = Parent.CurrentDragItem;
                 StateHasChanged();
                 Parent.CurrentDragSlot.reset();
-                Parent.Slots[this.Index].item = this.Item;
-                Parent.Slots[this.Index].count = Count;
+                Parent.changeSlot(Index, Count, Item);
             }
 
             Parent.Actions.Add(new InventoryAction { Action = "Drop", Item = this.Item, Index = this.Index });
