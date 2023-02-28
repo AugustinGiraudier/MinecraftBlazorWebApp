@@ -1,5 +1,4 @@
-﻿<div
-    class="item"
+﻿<div 
     ondragover="event.preventDefault();"
     draggable="true"
     @ondragstart="@OnDragStart"
@@ -7,8 +6,33 @@
     @ondragenter="@OnDragEnter"
     @ondragleave="@OnDragLeave">
 
-    @if (Item != null)
-    {
-        @Item.DisplayName
+
+    @if(type == InventoryItemType.SIMPLE){
+        <div class="item">
+            @if (Item != null)
+            {
+                <p class="m-0 text-sm">@Item.DisplayName</p>
+                <p class="m-0 text-sm text-warning">@Count</p>
+            }
+        </div>
     }
+    else{
+        <div class="d-flex align-items-center">
+            @if (!string.IsNullOrWhiteSpace(Item.ImageBase64))
+            {
+                <img src="data:image/png;base64, @(Item.ImageBase64)" class="img-thumbnail" title="@Item.DisplayName" alt="@Item.DisplayName" style="min-width: 50px; max-width: 150px" />
+            }
+            else
+            {
+                <img src="images/default.png" class="img-thumbnail" title="@Item.DisplayName" alt="@Item.DisplayName" style="max-width: 150px" />
+            }
+            <p class="m-0 mx-3">
+                @if (Item != null)
+                {
+                    @Item.DisplayName
+                }
+            </p>
+        </div>
+    }
+
 </div>

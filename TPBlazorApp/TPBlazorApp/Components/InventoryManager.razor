@@ -1,26 +1,32 @@
 ﻿@using Models
 <CascadingValue Value="@this">
-     
-    <div class="w-100 row">
+
+    <div class="w-100 row" >
 
         <!-- ========= Left part ========= -->
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div>Your Inventory</div>
             <div class="mt-2">
                 <div class="css-grid">
                     @{int iItem = 0; }
-                    @foreach (var item in Items)
+                    @foreach (var slot in Slots)
                     {
-                        <InventoryItem Item="item" Index="iItem" />
+                        <InventoryItem Item="slot.item" Count="slot.count" Index="iItem" />
                         iItem++;
                     }
                 </div>
             </div>
         </div>
 
+
+        <!-- ========= Middle part ========= -->
+        <div class="col-md-4 d-flex text-danger justify-content-center">
+            <ItemTrash />
+        </div>
+
         <!-- ========= Right part ========= -->
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <DataGrid TItem="Item"
                       Data="@allItems"
                       ReadData="@OnReadData"
@@ -30,7 +36,7 @@
                       Responsive>
                 <DataGridColumn TItem="Item" Field="@nameof(Item.Id)" Caption="Items">
                     <DisplayTemplate>
-                        <ItemWithImg Item="context" />
+                        <InventoryItem Item="context" type="InventoryItemType.WITH_IMAGE" NoDrop="true" />
                     </DisplayTemplate>
                 </DataGridColumn>
             </DataGrid>

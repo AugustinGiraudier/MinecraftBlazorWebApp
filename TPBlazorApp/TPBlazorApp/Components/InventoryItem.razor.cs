@@ -3,6 +3,13 @@ using TPBlazorApp.Models;
 
 namespace TPBlazorApp.Components
 {
+
+    public enum InventoryItemType
+    {
+        SIMPLE,
+        WITH_IMAGE
+    }
+
     public partial class InventoryItem
     {
         [Parameter]
@@ -14,8 +21,26 @@ namespace TPBlazorApp.Components
         [Parameter]
         public bool NoDrop { get; set; }
 
+        [Parameter]
+        public int Count { get; set; } = 1;
+        
+        [Parameter]
+        public InventoryItemType type { get; set; } = InventoryItemType.SIMPLE;
+
         [CascadingParameter]
         public InventoryManager Parent { get; set; }
+
+        public void reset()
+        {
+            if (!NoDrop)
+            {
+                Item = null;
+                Count = 1;
+                StateHasChanged();
+                Parent.Slots[this.Index].item = this.Item;
+                Parent.Slots[this.Index].count = Count;
+            }
+        }
 
         internal void OnDragEnter()
         {
@@ -44,18 +69,27 @@ namespace TPBlazorApp.Components
                 return;
             }
 
-            //this.Item = Parent.CurrentDragItem;
-            Parent.Items[this.Index] = this.Item;
+            if(this.Item == null || this.Item.Equals(Parent.CurrentDragItem))
+            {
+                if(Item == null)
+                    this.Count = Parent.CurrentDragSlot.Count;
+                else 
+                    this.Count += Parent.CurrentDragSlot.Count;
+                this.Item = Parent.CurrentDragItem;
+                StateHasChanged();
+                Parent.CurrentDragSlot.reset();
+                Parent.Slots[this.Index].item = this.Item;
+                Parent.Slots[this.Index].count = Count;
+            }
 
             Parent.Actions.Add(new InventoryAction { Action = "Drop", Item = this.Item, Index = this.Index });
 
-            // Check recipe
-            //Parent.CheckRecipe();
         }
 
         private void OnDragStart()
         {
-            //Parent.CurrentDragItem = this.Item;
+            Parent.CurrentDragItem = this.Item;
+            Parent.CurrentDragSlot = this;
 
             Parent.Actions.Add(new InventoryAction { Action = "Drag Start", Item = this.Item, Index = this.Index });
         }
