@@ -22,7 +22,7 @@ namespace TPBlazorApp.Components
         public ObservableCollection<InventoryAction> Actions { get; set; }
 
         [Parameter]
-        public List<Item?> Items { get; set; }
+        public List<Slot?> Slots { get; set; }
 
         public Item CurrentDragItem { get; set; }
         public InventoryItem CurrentDragSlot { get; set; }

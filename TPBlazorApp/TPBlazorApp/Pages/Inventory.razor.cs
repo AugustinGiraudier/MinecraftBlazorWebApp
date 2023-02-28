@@ -13,13 +13,13 @@ namespace TPBlazorApp.Pages
         [Inject]
         public IDataService DataService { get; set; }
 
-        private List<Item> items = new List<Item>();
+        private List<Slot> slots = new List<Slot>();
 
         public Inventory()
         {
             for(int i = 0; i < nbSlots; i++)
             {
-                items.Add(null);
+                slots.Add(new Slot { item=null , count=1 });
             }
         }
 

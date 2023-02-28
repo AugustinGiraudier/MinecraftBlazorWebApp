@@ -11,7 +11,8 @@
         <div class="item">
             @if (Item != null)
             {
-                @Item.DisplayName
+                <p class="m-0 text-sm">@Item.DisplayName</p>
+                <p class="m-0 text-sm text-warning">@Count</p>
             }
         </div>
     }

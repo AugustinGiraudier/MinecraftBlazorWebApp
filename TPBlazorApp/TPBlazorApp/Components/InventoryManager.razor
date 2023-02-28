@@ -9,9 +9,9 @@
             <div class="mt-2">
                 <div class="css-grid">
                     @{int iItem = 0; }
-                    @foreach (var item in Items)
+                    @foreach (var slot in Slots)
                     {
-                        <InventoryItem Item="item" Index="iItem" />
+                        <InventoryItem Item="slot.item" Count="slot.count" Index="iItem" />
                         iItem++;
                     }
                 </div>
