@@ -1,9 +1,11 @@
 ﻿using Blazored.LocalStorage;
 using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using TPBlazorApp.Models;
+using TPBlazorApp.Pages;
 using TPBlazorApp.Services;
 
 namespace TPBlazorApp.Components
@@ -13,17 +15,22 @@ namespace TPBlazorApp.Components
     {
 
         [Inject]
-        private ILocalStorageService _localStorage { get; set; }
-
-        [Inject]
         public ILogger<InventoryManager> _logger { get; set; }
+
+        [Parameter]
+        public ILocalStorageService _localStorage { get; set; }
+
+        [Parameter]
+        public IStringLocalizer<Inventory> Localizer { get; set; }
 
         [Parameter]
         public IDataService DataService { get; set; }
 
 
         public ObservableCollection<InventoryAction> Actions { get; set; }
-        private List<Slot?> Slots { get; set; }
+
+        [Parameter]
+        public List<Slot?> Slots { get; set; }
         public Item CurrentDragItem { get; set; }
         public InventoryItem CurrentDragSlot { get; set; }
         private List<Item> allItems { get; set; }
@@ -34,20 +41,20 @@ namespace TPBlazorApp.Components
         {
             Actions = new ObservableCollection<InventoryAction>();
             Actions.CollectionChanged += OnActionsCollectionChanged;
-            Slots = new List<Slot?>();
-            for (int i = 0; i < 32; i++)
-            {
-                Slots.Add(new Slot { item = null, count = 1 });
-            }
+            //Slots = new List<Slot?>();
+            //for (int i = 0; i < 32; i++)
+            //{
+            //    Slots.Add(new Slot { item = null, count = 1 });
+            //}
         }
 
-        protected override async Task OnInitializedAsync()
-        {
-            var test = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
-            if (test != null)
-                Slots = test;
-            StateHasChanged();
-        }
+        //protected override async Task OnAfterRenderAsync()
+        //{
+        //    var test = await _localStorage.GetItemAsync<List<Slot?>>("inventory");
+        //    if (test != null)
+        //        Slots = test;
+        //    StateHasChanged();
+        //}
         private async Task OnReadData(DataGridReadDataEventArgs<Item> e)
         {
             if (e.CancellationToken.IsCancellationRequested)
