@@ -20,6 +20,7 @@ builder.Services
    .AddBootstrapProviders()
    .AddFontAwesomeIcons();
 builder.Services.AddBlazoredLocalStorage();
+builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 builder.Services.AddBlazoredModal();
 // Add the controller of the app
 builder.Services.AddControllers();
